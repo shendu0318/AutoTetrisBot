@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tetris-Robot | Vision-based Pick-and-Place System</title>
-  <meta name="description" content="A robotic system that identifies, grasps, and compactly assembles Tetris-like blocks using computer vision, inverse kinematics, and genetic algorithms.">
-  <meta property="og:title" content="Tetris-Robot">
-  <meta property="og:description" content="Vision + Calibration + Planning: from simulation to real robot.">
+  <title>Tetris Block Pick-and-Place: Vision-Guided Robot from Simulation to Real World</title>
+  <meta name="description" content="A vision-guided robotic system for Tetris block pick-and-place, validated from simulation to real-world experiments.">
+  <meta property="og:title" content="Tetris Block Pick-and-Place: Vision-Guided Robot from Simulation to Real World">
+  <meta property="og:description" content="Vision-guided robot performing Tetris block recognition, grasping, and compact placement using computer vision and genetic algorithms.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,8 +42,8 @@
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">Robotic Innovation and Practice</p>
-          <h1 class="mt-3 text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl">Vision-based <strong class="bg-yellow-200 px-2 rounded">Pick-and-Place</strong> Robot for Compact Assembly</h1>
-          <p class="mt-5 text-lg text-slate-600">This project implements automatic block identification, grasping, and compact placement for seven types of Tetris-like pieces using computer vision, hand-eye calibration, inverse kinematics, and genetic algorithm optimization. The full workflow is validated from simulation to the real robot.</p>
+          <h1 class="mt-3 text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl">Tetris Block <strong class="bg-yellow-200 px-2 rounded">Pick-and-Place</strong>: Vision-Guided Robot from Simulation to Real World</h1>
+          <p class="mt-5 text-lg text-slate-600">This project presents a vision-based robotic system capable of detecting, grasping, and compactly assembling Tetris-shaped blocks. Combining computer vision, hand-eye calibration, inverse kinematics, and genetic algorithm optimization, the system bridges simulation and real-world robotic execution.</p>
           <div class="mt-6 flex flex-wrap gap-3">
             <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">Vision Detection</span>
             <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">Hand-Eye Calibration</span>
@@ -59,7 +59,7 @@
         <div class="relative">
           <!-- Hero image -->
           <div class="aspect-video w-full overflow-hidden rounded-2xl bg-slate-200 shadow-lg ring-1 ring-slate-900/5">
-            <img alt="Robot platform photo" class="h-full w-full object-cover" src="assets/real%20life%20placing.jpg">
+            <img alt="Robot platform photo" class="h-full w-full object-cover" src="assets/head%20pic.jpg">
           </div>
         </div>
       </div>
@@ -192,18 +192,28 @@
       <div class="mt-8">
         <h3 class="text-lg font-semibold">1) Pose Estimation in Simulation</h3>
         <p class="mt-2 text-sm text-slate-600">The system detects block rotation angles; the yellow block is rotated by ~60°, shown as around −300° in the pose matrix's last column (equivalent).</p>
-        <div class="mt-3 grid md:grid-cols-3 gap-4">
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/pos%20of%20cubes.png" alt="Simulation: detected rotations">
-            <figcaption class="p-2 text-xs text-slate-600">Detected rotations for yellow/blue/green blocks</figcaption>
+        <!-- New layout: one wide key figure + two supporting figures -->
+        <div class="mt-4 grid md:grid-cols-3 gap-4">
+          <!-- Key figure (wide) -->
+          <figure class="md:col-span-2 rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white">
+            <div class="relative w-full" style="padding-bottom:56.25%">
+              <img src="assets/pos%20of%20cubes.png" alt="Simulation: detected rotations" class="absolute inset-0 w-full h-full object-contain bg-slate-50">
+            </div>
+            <figcaption class="p-3 text-xs text-slate-600">Detected rotations for yellow/blue/green blocks (yellow ≈ 60° → −300°)</figcaption>
           </figure>
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/yellow%20cube%20original.png" alt="Yellow cube original pose">
-            <figcaption class="p-2 text-xs text-slate-600">Yellow cube — original pose definition</figcaption>
+
+          <!-- Supporting figures -->
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white">
+            <div class="relative w-full" style="padding-bottom:56.25%">
+              <img src="assets/yellow%20cube%20original.png" alt="Yellow cube original pose" class="absolute inset-0 w-full h-full object-contain bg-slate-50">
+            </div>
+            <figcaption class="p-3 text-xs text-slate-600">Yellow cube — original pose</figcaption>
           </figure>
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/yellow%20cube%20rotated.png" alt="Yellow cube rotated pose">
-            <figcaption class="p-2 text-xs text-slate-600">Yellow cube — rotated pose (~60° / −300°)</figcaption>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white">
+            <div class="relative w-full" style="padding-bottom:56.25%">
+              <img src="assets/yellow%20cube%20rotated.png" alt="Yellow cube rotated pose" class="absolute inset-0 w-full h-full object-contain bg-slate-50">
+            </div>
+            <figcaption class="p-3 text-xs text-slate-600">Yellow cube — rotated pose (~60° / −300°)</figcaption>
           </figure>
         </div>
       </div>
@@ -214,15 +224,15 @@
         <p class="mt-2 text-sm text-slate-600">Camera extracts the minimum bounding rectangle of the Tetris block and uses the rectangle center as the grasping point.</p>
         <div class="mt-3 grid md:grid-cols-3 gap-4">
           <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/real%20life%20cube%20recognition.jpg" alt="Real-life cubes recognition">
+            <img src="assets/real%20life%20cube%20recognition.jpg" alt="Real-life cubes recognition" class="w-full h-full object-cover">
             <figcaption class="p-2 text-xs text-slate-600">Real-life: bounding box & grasp center</figcaption>
           </figure>
           <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/real%20life%20placing.jpg" alt="Real-life placing result">
+            <img src="assets/real%20life%20placing.jpg" alt="Real-life placing result" class="w-full h-full object-cover">
             <figcaption class="p-2 text-xs text-slate-600">Result after compact placement</figcaption>
           </figure>
           <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/real%20life%20original%20purple%20cube.jpg" alt="Real-life original purple cube">
+            <img src="assets/real%20life%20original%20purple%20cube.jpg" alt="Real-life original purple cube" class="w-full h-full object-cover">
             <figcaption class="p-2 text-xs text-slate-600">Original purple cube (reference)</figcaption>
           </figure>
         </div>
@@ -234,11 +244,11 @@
         <p class="mt-2 text-sm text-slate-600">Bounding rectangles and grasp centers visualized during simulation.</p>
         <div class="mt-3 grid md:grid-cols-2 gap-4">
           <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/simulation%20grasp%201.png" alt="Simulation grasp 1">
+            <img src="assets/simulation%20grasp%201.png" alt="Simulation grasp 1" class="w-full h-full object-cover">
             <figcaption class="p-2 text-xs text-slate-600">simulation grasp 1</figcaption>
           </figure>
           <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/simulation%20grasp%202.png" alt="Simulation grasp 2">
+            <img src="assets/simulation%20grasp%202.png" alt="Simulation grasp 2" class="w-full h-full object-cover">
             <figcaption class="p-2 text-xs text-slate-600">simulation grasp 2</figcaption>
           </figure>
         </div>
@@ -250,21 +260,21 @@
         <p class="mt-2 text-sm text-slate-600">Two candidate compact layouts from the genetic-algorithm-based planner.</p>
         <div class="mt-3 grid md:grid-cols-2 gap-4">
           <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/terits%20solution%201.png" alt="Tetris solution 1">
+            <img src="assets/terits%20solution%201.png" alt="Tetris solution 1" class="w-full h-full object-cover">
             <figcaption class="p-2 text-xs text-slate-600">terits solution 1</figcaption>
           </figure>
           <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/terits%20solution%202.png" alt="Tetris solution 2">
+            <img src="assets/terits%20solution%202.png" alt="Tetris solution 2" class="w-full h-full object-cover">
             <figcaption class="p-2 text-xs text-slate-600">terits solution 2</figcaption>
           </figure>
         </div>
         <div class="mt-3 grid md:grid-cols-2 gap-4">
           <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/terits%20solution%20pic%201.png" alt="Tetris solution picture 1">
+            <img src="assets/terits%20solution%20pic%201.png" alt="Tetris solution picture 1" class="w-full h-full object-cover">
             <figcaption class="p-2 text-xs text-slate-600">terits solution pic 1</figcaption>
           </figure>
           <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/terits%20solution%20pic%202.png" alt="Tetris solution picture 2">
+            <img src="assets/terits%20solution%20pic%202.png" alt="Tetris solution picture 2" class="w-full h-full object-cover">
             <figcaption class="p-2 text-xs text-slate-600">terits solution pic 2</figcaption>
           </figure>
         </div>
@@ -274,12 +284,12 @@
       <div class="mt-10">
         <h3 class="text-lg font-semibold">5) Tetris Shape Definition</h3>
         <p class="mt-2 text-sm text-slate-600">Programmatic definition of seven Tetris-like blocks used by the planner.</p>
-        <div class="mt-3 grid md:grid-cols-1 gap-4">
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/terits%20definition.png" alt="Tetris shape definition">
-            <figcaption class="p-2 text-xs text-slate-600">terits definition</figcaption>
-          </figure>
-        </div>
+        <figure class="mt-3 rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white">
+          <div class="relative w-full" style="padding-bottom:56.25%">
+            <img src="assets/tetrits%20definition.png" alt="Tetris shape definition" class="absolute inset-0 w-full h-full object-contain bg-slate-50">
+          </div>
+          <figcaption class="p-3 text-xs text-slate-600">tetrits definition</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -310,8 +320,9 @@
   <!-- Footer -->
   <footer class="py-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-500">
-      <div class="flex items-center justify-between">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>© <span id="y"></span> Tetris-Robot</div>
+        <div class="text-slate-600">Vision‑guided robotic Tetris assembly — bridging simulation and reality.</div>
         <a href="#top" class="rounded-xl border border-slate-200 px-3 py-1.5 hover:bg-slate-50">Back to top ↑</a>
       </div>
     </div>
