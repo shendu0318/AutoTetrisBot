@@ -15,6 +15,12 @@
   <style>
     html{scroll-behavior:smooth}
     body{font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"}
+    /* Lightbox */
+    .lb-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.8);display:none;align-items:center;justify-content:center;z-index:60}
+    .lb-backdrop.show{display:flex}
+    .lb-img{max-width:90vw;max-height:85vh;border-radius:1rem;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .lb-close{position:absolute;top:14px;right:14px;background:#fff;border-radius:.75rem;padding:.35rem .6rem;font-weight:700}
+    .fig{cursor:zoom-in}
   </style>
 </head>
 <body class="bg-white text-slate-800">
@@ -57,7 +63,6 @@
           </div>
         </div>
         <div class="relative">
-          <!-- Hero image -->
           <div class="aspect-video w-full overflow-hidden rounded-2xl bg-slate-200 shadow-lg ring-1 ring-slate-900/5">
             <img alt="Robot platform photo" class="h-full w-full object-cover" src="assets/head%20pic.jpg">
           </div>
@@ -188,68 +193,64 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold">Evidence & Figures</h2>
 
-      <!-- 1. Pose estimation in simulation -->
+      <!-- 1. Pose estimation in simulation (two rows: key figure on top, two supports bottom) -->
       <div class="mt-8">
         <h3 class="text-lg font-semibold">1) Pose Estimation in Simulation</h3>
         <p class="mt-2 text-sm text-slate-600">The system detects block rotation angles; the yellow block is rotated by ~60°, shown as around −300° in the pose matrix's last column (equivalent).</p>
-        <!-- New layout: one wide key figure + two supporting figures -->
-        <div class="mt-4 grid md:grid-cols-3 gap-4">
-          <!-- Key figure (wide) -->
-          <figure class="md:col-span-2 rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white">
+        <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white fig">
+          <div class="relative w-full" style="padding-bottom:56.25%">
+            <img src="assets/pos%20of%20cubes.png" alt="Simulation: detected rotations" class="absolute inset-0 w-full h-full object-contain bg-slate-50 lb-src">
+          </div>
+          <figcaption class="p-3 text-xs text-slate-600">Detected rotations for yellow/blue/green blocks (yellow ≈ 60° → −300°)</figcaption>
+        </figure>
+        <div class="mt-4 grid md:grid-cols-2 gap-4">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white fig">
             <div class="relative w-full" style="padding-bottom:56.25%">
-              <img src="assets/pos%20of%20cubes.png" alt="Simulation: detected rotations" class="absolute inset-0 w-full h-full object-contain bg-slate-50">
-            </div>
-            <figcaption class="p-3 text-xs text-slate-600">Detected rotations for yellow/blue/green blocks (yellow ≈ 60° → −300°)</figcaption>
-          </figure>
-
-          <!-- Supporting figures -->
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white">
-            <div class="relative w-full" style="padding-bottom:56.25%">
-              <img src="assets/yellow%20cube%20original.png" alt="Yellow cube original pose" class="absolute inset-0 w-full h-full object-contain bg-slate-50">
+              <img src="assets/yellow%20cube%20original.png" alt="Yellow cube original pose" class="absolute inset-0 w-full h-full object-contain bg-slate-50 lb-src">
             </div>
             <figcaption class="p-3 text-xs text-slate-600">Yellow cube — original pose</figcaption>
           </figure>
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white fig">
             <div class="relative w-full" style="padding-bottom:56.25%">
-              <img src="assets/yellow%20cube%20rotated.png" alt="Yellow cube rotated pose" class="absolute inset-0 w-full h-full object-contain bg-slate-50">
+              <img src="assets/yellow%20cube%20rotated.png" alt="Yellow cube rotated pose" class="absolute inset-0 w-full h-full object-contain bg-slate-50 lb-src">
             </div>
             <figcaption class="p-3 text-xs text-slate-600">Yellow cube — rotated pose (~60° / −300°)</figcaption>
           </figure>
         </div>
       </div>
 
-      <!-- 2. Real-world recognition -->
+      <!-- 2. Simulation grasping frames (now before real-world) -->
       <div class="mt-10">
-        <h3 class="text-lg font-semibold">2) Real-world Recognition</h3>
-        <p class="mt-2 text-sm text-slate-600">Camera extracts the minimum bounding rectangle of the Tetris block and uses the rectangle center as the grasping point.</p>
-        <div class="mt-3 grid md:grid-cols-3 gap-4">
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/real%20life%20cube%20recognition.jpg" alt="Real-life cubes recognition" class="w-full h-full object-cover">
-            <figcaption class="p-2 text-xs text-slate-600">Real-life: bounding box & grasp center</figcaption>
+        <h3 class="text-lg font-semibold">2) Simulation Grasping Frames</h3>
+        <p class="mt-2 text-sm text-slate-600">Bounding rectangles and grasp centers visualized during simulation.</p>
+        <div class="mt-3 grid md:grid-cols-2 gap-4">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm fig">
+            <img src="assets/simulation%20grasp%201.png" alt="Simulation grasp 1" class="w-full h-full object-cover lb-src">
+            <figcaption class="p-2 text-xs text-slate-600">simulation grasp 1</figcaption>
           </figure>
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/real%20life%20placing.jpg" alt="Real-life placing result" class="w-full h-full object-cover">
-            <figcaption class="p-2 text-xs text-slate-600">Result after compact placement</figcaption>
-          </figure>
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/real%20life%20original%20purple%20cube.jpg" alt="Real-life original purple cube" class="w-full h-full object-cover">
-            <figcaption class="p-2 text-xs text-slate-600">Original purple cube (reference)</figcaption>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm fig">
+            <img src="assets/simulation%20grasp%202.png" alt="Simulation grasp 2" class="w-full h-full object-cover lb-src">
+            <figcaption class="p-2 text-xs text-slate-600">simulation grasp 2</figcaption>
           </figure>
         </div>
       </div>
 
-      <!-- 3. Simulation grasping frames -->
+      <!-- 3. Real-world recognition (reordered: 3,1,2) -->
       <div class="mt-10">
-        <h3 class="text-lg font-semibold">3) Simulation Grasping Frames</h3>
-        <p class="mt-2 text-sm text-slate-600">Bounding rectangles and grasp centers visualized during simulation.</p>
-        <div class="mt-3 grid md:grid-cols-2 gap-4">
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/simulation%20grasp%201.png" alt="Simulation grasp 1" class="w-full h-full object-cover">
-            <figcaption class="p-2 text-xs text-slate-600">simulation grasp 1</figcaption>
+        <h3 class="text-lg font-semibold">3) Real-world Recognition</h3>
+        <p class="mt-2 text-sm text-slate-600">Camera extracts the minimum bounding rectangle of the Tetris block and uses the rectangle center as the grasping point.</p>
+        <div class="mt-3 grid md:grid-cols-3 gap-4">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm fig">
+            <img src="assets/real%20life%20original%20purple%20cube.jpg" alt="Real-life original purple cube" class="w-full h-full object-cover lb-src">
+            <figcaption class="p-2 text-xs text-slate-600">Original purple cube (reference)</figcaption>
           </figure>
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/simulation%20grasp%202.png" alt="Simulation grasp 2" class="w-full h-full object-cover">
-            <figcaption class="p-2 text-xs text-slate-600">simulation grasp 2</figcaption>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm fig">
+            <img src="assets/real%20life%20cube%20recognition.jpg" alt="Real-life cubes recognition" class="w-full h-full object-cover lb-src">
+            <figcaption class="p-2 text-xs text-slate-600">Bounding box & grasp center</figcaption>
+          </figure>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm fig">
+            <img src="assets/real%20life%20placing.jpg" alt="Real-life placing result" class="w-full h-full object-cover lb-src">
+            <figcaption class="p-2 text-xs text-slate-600">Result after compact placement</figcaption>
           </figure>
         </div>
       </div>
@@ -259,22 +260,22 @@
         <h3 class="text-lg font-semibold">4) Tetris Placement (GA) — Solutions</h3>
         <p class="mt-2 text-sm text-slate-600">Two candidate compact layouts from the genetic-algorithm-based planner.</p>
         <div class="mt-3 grid md:grid-cols-2 gap-4">
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/terits%20solution%201.png" alt="Tetris solution 1" class="w-full h-full object-cover">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm fig">
+            <img src="assets/terits%20solution%201.png" alt="Tetris solution 1" class="w-full h-full object-cover lb-src">
             <figcaption class="p-2 text-xs text-slate-600">terits solution 1</figcaption>
           </figure>
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/terits%20solution%202.png" alt="Tetris solution 2" class="w-full h-full object-cover">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm fig">
+            <img src="assets/terits%20solution%202.png" alt="Tetris solution 2" class="w-full h-full object-cover lb-src">
             <figcaption class="p-2 text-xs text-slate-600">terits solution 2</figcaption>
           </figure>
         </div>
         <div class="mt-3 grid md:grid-cols-2 gap-4">
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/terits%20solution%20pic%201.png" alt="Tetris solution picture 1" class="w-full h-full object-cover">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm fig">
+            <img src="assets/terits%20solution%20pic%201.png" alt="Tetris solution picture 1" class="w-full h-full object-cover lb-src">
             <figcaption class="p-2 text-xs text-slate-600">terits solution pic 1</figcaption>
           </figure>
-          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
-            <img src="assets/terits%20solution%20pic%202.png" alt="Tetris solution picture 2" class="w-full h-full object-cover">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm fig">
+            <img src="assets/terits%20solution%20pic%202.png" alt="Tetris solution picture 2" class="w-full h-full object-cover lb-src">
             <figcaption class="p-2 text-xs text-slate-600">terits solution pic 2</figcaption>
           </figure>
         </div>
@@ -284,9 +285,9 @@
       <div class="mt-10">
         <h3 class="text-lg font-semibold">5) Tetris Shape Definition</h3>
         <p class="mt-2 text-sm text-slate-600">Programmatic definition of seven Tetris-like blocks used by the planner.</p>
-        <figure class="mt-3 rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white">
+        <figure class="mt-3 rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white fig">
           <div class="relative w-full" style="padding-bottom:56.25%">
-            <img src="assets/tetrits%20definition.png" alt="Tetris shape definition" class="absolute inset-0 w-full h-full object-contain bg-slate-50">
+            <img src="assets/tetrits%20definition.png" alt="Tetris shape definition" class="absolute inset-0 w-full h-full object-contain bg-slate-50 lb-src">
           </div>
           <figcaption class="p-3 text-xs text-slate-600">tetrits definition</figcaption>
         </figure>
@@ -328,5 +329,25 @@
     </div>
     <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
   </footer>
+
+  <!-- Lightbox markup -->
+  <div id="lb" class="lb-backdrop" role="dialog" aria-modal="true">
+    <button class="lb-close" aria-label="Close">✕</button>
+    <img class="lb-img" alt="preview"/>
+  </div>
+  <script>
+    // Lightbox behavior
+    const lb = document.getElementById('lb');
+    const lbImg = lb.querySelector('.lb-img');
+    const closeBtn = lb.querySelector('.lb-close');
+    function openLb(src){ lbImg.src = src; lb.classList.add('show'); }
+    function closeLb(){ lb.classList.remove('show'); lbImg.src=''; }
+    document.addEventListener('click', (e)=>{
+      const t = e.target;
+      if(t.classList.contains('lb-src')){ openLb(t.src); }
+      if(t === lb || t === closeBtn){ closeLb(); }
+    });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLb(); });
+  </script>
 </body>
 </html>
