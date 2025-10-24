@@ -18,6 +18,7 @@
   </style>
 </head>
 <body class="bg-white text-slate-800">
+  <!-- Header -->
   <header class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-200">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
@@ -35,6 +36,7 @@
     </div>
   </header>
 
+  <!-- Hero -->
   <section id="top" class="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -55,14 +57,16 @@
           </div>
         </div>
         <div class="relative">
+          <!-- Hero image -->
           <div class="aspect-video w-full overflow-hidden rounded-2xl bg-slate-200 shadow-lg ring-1 ring-slate-900/5">
-            <img alt="Robot platform photo" class="h-full w-full object-cover" src="REPLACE_WITH_LAB_IMAGE.jpg">
+            <img alt="Robot platform photo" class="h-full w-full object-cover" src="assets/real%20life%20placing.jpg">
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Overview -->
   <section id="overview" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-3 gap-8">
@@ -93,6 +97,7 @@
     </div>
   </section>
 
+  <!-- Demo -->
   <section id="demo" class="bg-slate-50 py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex items-baseline justify-between">
@@ -100,22 +105,25 @@
         <a href="#links" class="text-sm font-semibold text-slate-600 hover:text-slate-900">More Videos & Code →</a>
       </div>
       <div class="mt-6 grid lg:grid-cols-2 gap-8">
+        <!-- Real-world grasping video -->
         <div class="rounded-2xl overflow-hidden ring-1 ring-slate-900/5 shadow-lg">
           <div class="aspect-video bg-black/5 flex items-center justify-center">
-            <iframe class="h-full w-full" src="REPLACE_WITH_DEMO_VIDEO_URL" title="demo video" allowfullscreen></iframe>
+            <iframe class="h-full w-full" src="https://www.youtube.com/embed/kt_O2Yibtko" title="Real-world grasping demo" allowfullscreen></iframe>
           </div>
-          <div class="p-4 text-sm text-slate-600">Real robot grasping and placing with automatic pose correction</div>
+          <div class="p-4 text-sm text-slate-600">Real robot: grasping & compact placement</div>
         </div>
+        <!-- Simulation grasping video -->
         <div class="rounded-2xl overflow-hidden ring-1 ring-slate-900/5 shadow-lg">
-          <div class="aspect-video bg-slate-200">
-            <img alt="Simulation environment" class="h-full w-full object-cover" src="REPLACE_WITH_SIM_IMAGE.jpg">
+          <div class="aspect-video bg-black/5 flex items-center justify-center">
+            <iframe class="h-full w-full" src="https://www.youtube.com/embed/WwwUkLDe8Lo" title="Simulation grasping demo" allowfullscreen></iframe>
           </div>
-          <div class="p-4 text-sm text-slate-600">Simulation scene with vision sensor and target blocks</div>
+          <div class="p-4 text-sm text-slate-600">Simulation: grasping with vision bounding box & center point</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Method -->
   <section id="method" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold">Methods and Implementation</h2>
@@ -149,6 +157,7 @@
     </div>
   </section>
 
+  <!-- Results -->
   <section id="results" class="bg-slate-50 py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold">Results</h2>
@@ -174,20 +183,108 @@
     </div>
   </section>
 
+  <!-- Gallery -->
   <section id="gallery" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold">Gallery</h2>
-      <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_LAB_IMAGE.jpg" alt="Real robot"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_SIM_IMAGE.jpg" alt="Simulation"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_CALIB_IMAGE.jpg" alt="Calibration"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_DETECT_IMAGE.jpg" alt="Detection"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_PLACE_IMAGE.jpg" alt="Placement"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_RESULT_IMAGE.jpg" alt="Final assembly"/>
+      <h2 class="text-2xl font-bold">Evidence & Figures</h2>
+
+      <!-- 1. Pose estimation in simulation -->
+      <div class="mt-8">
+        <h3 class="text-lg font-semibold">1) Pose Estimation in Simulation</h3>
+        <p class="mt-2 text-sm text-slate-600">The system detects block rotation angles; the yellow block is rotated by ~60°, shown as around −300° in the pose matrix's last column (equivalent).</p>
+        <div class="mt-3 grid md:grid-cols-3 gap-4">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/pos%20of%20cubes.png" alt="Simulation: detected rotations">
+            <figcaption class="p-2 text-xs text-slate-600">Detected rotations for yellow/blue/green blocks</figcaption>
+          </figure>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/yellow%20cube%20original.png" alt="Yellow cube original pose">
+            <figcaption class="p-2 text-xs text-slate-600">Yellow cube — original pose definition</figcaption>
+          </figure>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/yellow%20cube%20rotated.png" alt="Yellow cube rotated pose">
+            <figcaption class="p-2 text-xs text-slate-600">Yellow cube — rotated pose (~60° / −300°)</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 2. Real-world recognition -->
+      <div class="mt-10">
+        <h3 class="text-lg font-semibold">2) Real-world Recognition</h3>
+        <p class="mt-2 text-sm text-slate-600">Camera extracts the minimum bounding rectangle of the Tetris block and uses the rectangle center as the grasping point.</p>
+        <div class="mt-3 grid md:grid-cols-3 gap-4">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/real%20life%20cube%20recognition.jpg" alt="Real-life cubes recognition">
+            <figcaption class="p-2 text-xs text-slate-600">Real-life: bounding box & grasp center</figcaption>
+          </figure>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/real%20life%20placing.jpg" alt="Real-life placing result">
+            <figcaption class="p-2 text-xs text-slate-600">Result after compact placement</figcaption>
+          </figure>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/real%20life%20original%20purple%20cube.jpg" alt="Real-life original purple cube">
+            <figcaption class="p-2 text-xs text-slate-600">Original purple cube (reference)</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 3. Simulation grasping frames -->
+      <div class="mt-10">
+        <h3 class="text-lg font-semibold">3) Simulation Grasping Frames</h3>
+        <p class="mt-2 text-sm text-slate-600">Bounding rectangles and grasp centers visualized during simulation.</p>
+        <div class="mt-3 grid md:grid-cols-2 gap-4">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/simulation%20grasp%201.png" alt="Simulation grasp 1">
+            <figcaption class="p-2 text-xs text-slate-600">simulation grasp 1</figcaption>
+          </figure>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/simulation%20grasp%202.png" alt="Simulation grasp 2">
+            <figcaption class="p-2 text-xs text-slate-600">simulation grasp 2</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 4. Tetris placement solutions -->
+      <div class="mt-10">
+        <h3 class="text-lg font-semibold">4) Tetris Placement (GA) — Solutions</h3>
+        <p class="mt-2 text-sm text-slate-600">Two candidate compact layouts from the genetic-algorithm-based planner.</p>
+        <div class="mt-3 grid md:grid-cols-2 gap-4">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/terits%20solution%201.png" alt="Tetris solution 1">
+            <figcaption class="p-2 text-xs text-slate-600">terits solution 1</figcaption>
+          </figure>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/terits%20solution%202.png" alt="Tetris solution 2">
+            <figcaption class="p-2 text-xs text-slate-600">terits solution 2</figcaption>
+          </figure>
+        </div>
+        <div class="mt-3 grid md:grid-cols-2 gap-4">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/terits%20solution%20pic%201.png" alt="Tetris solution picture 1">
+            <figcaption class="p-2 text-xs text-slate-600">terits solution pic 1</figcaption>
+          </figure>
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/terits%20solution%20pic%202.png" alt="Tetris solution picture 2">
+            <figcaption class="p-2 text-xs text-slate-600">terits solution pic 2</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 5. Tetris definition -->
+      <div class="mt-10">
+        <h3 class="text-lg font-semibold">5) Tetris Shape Definition</h3>
+        <p class="mt-2 text-sm text-slate-600">Programmatic definition of seven Tetris-like blocks used by the planner.</p>
+        <div class="mt-3 grid md:grid-cols-1 gap-4">
+          <figure class="rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm">
+            <img src="assets/terits%20definition.png" alt="Tetris shape definition">
+            <figcaption class="p-2 text-xs text-slate-600">terits definition</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Links -->
   <section id="links" class="bg-slate-900 py-16 text-slate-100">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold">Resources</h2>
@@ -201,8 +298,8 @@
           <div class="text-lg font-semibold">Technical Report / Slides →</div>
           <div class="text-sm text-slate-300">Algorithms and Experimental Details</div>
         </a>
-        <a class="group rounded-2xl border border-white/10 p-5 hover:bg-white/5" href="REPLACE_WITH_DEMO_VIDEO_URL" target="_blank" rel="noreferrer">
-          <div class="text-lg font-semibold">Demo Video →</div>
+        <a class="group rounded-2xl border border-white/10 p-5 hover:bg-white/5" href="https://www.youtube.com/watch?v=kt_O2Yibtko" target="_blank" rel="noreferrer">
+          <div class="text-lg font-semibold">Real-world Demo Video →</div>
           <div class="text-sm text-slate-300">2–5 minute demonstration</div>
         </a>
       </div>
@@ -210,6 +307,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="py-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-500">
       <div class="flex items-center justify-between">
