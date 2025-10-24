@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>目标识别抓取与拼接机器人 | Project Showcase</title>
-  <meta name="description" content="通过视觉识别、逆运动学与遗传算法实现的俄罗斯方块抓取与紧凑拼接机器人——仿真到实机的完整流程与成果。">
-  <meta property="og:title" content="目标识别抓取与拼接机器人">
-  <meta property="og:description" content="视觉+手眼标定+规划：从仿真到实机的抓取与紧凑拼接">
+  <title>Tetris-Robot | Vision-based Pick-and-Place System</title>
+  <meta name="description" content="A robotic system that identifies, grasps, and compactly assembles Tetris-like blocks using computer vision, inverse kinematics, and genetic algorithms.">
+  <meta property="og:title" content="Tetris-Robot">
+  <meta property="og:description" content="Vision + Calibration + Planning: from simulation to real robot.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,79 +18,74 @@
   </style>
 </head>
 <body class="bg-white text-slate-800">
-  <!-- Header -->
   <header class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-200">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <a href="#top" class="font-extrabold tracking-tight text-lg">Tetris-Robot</a>
         <nav class="hidden md:flex gap-6 text-sm font-medium text-slate-600">
-          <a href="#overview" class="hover:text-slate-900">概览</a>
-          <a href="#demo" class="hover:text-slate-900">演示</a>
-          <a href="#method" class="hover:text-slate-900">方法</a>
-          <a href="#results" class="hover:text-slate-900">结果</a>
-          <a href="#gallery" class="hover:text-slate-900">图集</a>
-          <a href="#links" class="hover:text-slate-900">资源</a>
+          <a href="#overview" class="hover:text-slate-900">Overview</a>
+          <a href="#demo" class="hover:text-slate-900">Demo</a>
+          <a href="#method" class="hover:text-slate-900">Method</a>
+          <a href="#results" class="hover:text-slate-900">Results</a>
+          <a href="#gallery" class="hover:text-slate-900">Gallery</a>
+          <a href="#links" class="hover:text-slate-900">Resources</a>
         </nav>
-        <a href="#links" class="inline-flex items-center rounded-2xl border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold shadow-sm hover:bg-slate-50">查看代码/文档</a>
+        <a href="#links" class="inline-flex items-center rounded-2xl border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold shadow-sm hover:bg-slate-50">View Code/Docs</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
   <section id="top" class="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">机器人交叉创新设计与实践</p>
-          <h1 class="mt-3 text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl">目标识别抓取与<strong class="bg-yellow-200 px-2 rounded">紧凑拼接</strong>机器人</h1>
-          <p class="mt-5 text-lg text-slate-600">通过视觉识别（颜色+模板）、手眼标定、逆运动学与遗传算法规划，实现七类“俄罗斯方块”物块的<strong>自动抓取与紧凑放置</strong>。项目按“先仿真、后实机”完成端到端验证。</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">Robotic Innovation and Practice</p>
+          <h1 class="mt-3 text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl">Vision-based <strong class="bg-yellow-200 px-2 rounded">Pick-and-Place</strong> Robot for Compact Assembly</h1>
+          <p class="mt-5 text-lg text-slate-600">This project implements automatic block identification, grasping, and compact placement for seven types of Tetris-like pieces using computer vision, hand-eye calibration, inverse kinematics, and genetic algorithm optimization. The full workflow is validated from simulation to the real robot.</p>
           <div class="mt-6 flex flex-wrap gap-3">
-            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">视觉检测</span>
-            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">手眼标定</span>
-            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">逆运动学</span>
-            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">轨迹/顺序规划</span>
-            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">遗传算法</span>
+            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">Vision Detection</span>
+            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">Hand-Eye Calibration</span>
+            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">Inverse Kinematics</span>
+            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">Trajectory & Sequence Planning</span>
+            <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold">Genetic Algorithm</span>
           </div>
           <div class="mt-8 flex gap-3">
-            <a href="#demo" class="rounded-2xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-slate-800">观看演示</a>
-            <a href="#method" class="rounded-2xl border border-slate-300 px-4 py-2.5 text-sm font-semibold shadow-sm hover:bg-slate-50">查看方法</a>
+            <a href="#demo" class="rounded-2xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-slate-800">Watch Demo</a>
+            <a href="#method" class="rounded-2xl border border-slate-300 px-4 py-2.5 text-sm font-semibold shadow-sm hover:bg-slate-50">See Method</a>
           </div>
         </div>
         <div class="relative">
-          <!-- Replace src with your hero image (lab photo or simulation). -->
           <div class="aspect-video w-full overflow-hidden rounded-2xl bg-slate-200 shadow-lg ring-1 ring-slate-900/5">
-            <img alt="实验平台照片" class="h-full w-full object-cover" src="REPLACE_WITH_LAB_IMAGE.jpg">
+            <img alt="Robot platform photo" class="h-full w-full object-cover" src="REPLACE_WITH_LAB_IMAGE.jpg">
           </div>
-          <p class="mt-3 text-xs text-slate-500">* 将 <code>REPLACE_WITH_LAB_IMAGE.jpg</code> 与 <code>REPLACE_WITH_SIM_IMAGE.jpg</code> 替换为你的图片文件路径或在线链接。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Overview -->
   <section id="overview" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2">
-          <h2 class="text-2xl font-bold">项目概览</h2>
-          <p class="mt-4 text-slate-600">目标：机器人通过加装视觉系统，识别物块的<strong>类别、位置与姿态</strong>，规划抓取顺序与拼接组合，控制机械臂依次抓取并放置到方框盘面中，完成<strong>紧凑拼接</strong>。</p>
+          <h2 class="text-2xl font-bold">Project Overview</h2>
+          <p class="mt-4 text-slate-600">Goal: The robot uses a vision system to identify the <strong>type, position, and orientation</strong> of blocks, plan the grasping order and compact placement, and execute pick-and-place operations automatically.</p>
           <ul class="mt-4 list-disc pl-6 text-slate-600 space-y-2">
-            <li>流程：<span class="font-medium">仿真验证 → 实机部署</span></li>
-            <li>仿真：自主实现逆运动学，输入目标位姿输出关节角；使用 Dummy 连接 tip/target 进行跟随验证</li>
-            <li>检测：颜色分割定位外接矩形中心；模板匹配求取物块旋转角度</li>
-            <li>标定：棋盘格手眼标定，求相机与末端的位姿变换</li>
-            <li>规划：坐标化描述各形状；合法性检测；以遗传算法优化“消行、贴合度、行列变换”等指标</li>
+            <li>Workflow: <span class="font-medium">Simulation → Real Robot</span></li>
+            <li>Simulation: Solving inverse kinematics and verifying target tracking via dummy connections</li>
+            <li>Detection: Color segmentation and template matching for pose estimation</li>
+            <li>Calibration: Hand-eye calibration with chessboard pattern</li>
+            <li>Planning: Block legality checking and GA-based optimization for compact layout</li>
           </ul>
         </div>
         <div class="lg:col-span-1">
           <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
-            <h3 class="text-sm font-semibold text-slate-700">关键信息</h3>
+            <h3 class="text-sm font-semibold text-slate-700">Key Information</h3>
             <dl class="mt-3 grid grid-cols-2 gap-3 text-sm">
-              <div><dt class="text-slate-500">物块类型</dt><dd class="font-medium">7 种 Tetris 形状</dd></div>
-              <div><dt class="text-slate-500">识别方式</dt><dd class="font-medium">颜色 + 模板</dd></div>
-              <div><dt class="text-slate-500">标定方式</dt><dd class="font-medium">棋盘格手眼标定</dd></div>
-              <div><dt class="text-slate-500">放置策略</dt><dd class="font-medium">遗传算法评分</dd></div>
-              <div><dt class="text-slate-500">实现流程</dt><dd class="font-medium">仿真→实机</dd></div>
+              <div><dt class="text-slate-500">Block Types</dt><dd class="font-medium">7 Tetris Shapes</dd></div>
+              <div><dt class="text-slate-500">Detection</dt><dd class="font-medium">Color + Template</dd></div>
+              <div><dt class="text-slate-500">Calibration</dt><dd class="font-medium">Chessboard Hand-Eye</dd></div>
+              <div><dt class="text-slate-500">Placement</dt><dd class="font-medium">Genetic Algorithm</dd></div>
+              <div><dt class="text-slate-500">Flow</dt><dd class="font-medium">Simulation → Real</dd></div>
             </dl>
           </div>
         </div>
@@ -98,135 +93,128 @@
     </div>
   </section>
 
-  <!-- Demo -->
   <section id="demo" class="bg-slate-50 py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex items-baseline justify-between">
-        <h2 class="text-2xl font-bold">演示</h2>
-        <a href="#links" class="text-sm font-semibold text-slate-600 hover:text-slate-900">更多视频与代码 →</a>
+        <h2 class="text-2xl font-bold">Demo</h2>
+        <a href="#links" class="text-sm font-semibold text-slate-600 hover:text-slate-900">More Videos & Code →</a>
       </div>
       <div class="mt-6 grid lg:grid-cols-2 gap-8">
         <div class="rounded-2xl overflow-hidden ring-1 ring-slate-900/5 shadow-lg">
-          <!-- Replace with your YouTube/Bilibili link -->
           <div class="aspect-video bg-black/5 flex items-center justify-center">
             <iframe class="h-full w-full" src="REPLACE_WITH_DEMO_VIDEO_URL" title="demo video" allowfullscreen></iframe>
           </div>
-          <div class="p-4 text-sm text-slate-600">实机抓取与放置（含自动姿态矫正）</div>
+          <div class="p-4 text-sm text-slate-600">Real robot grasping and placing with automatic pose correction</div>
         </div>
         <div class="rounded-2xl overflow-hidden ring-1 ring-slate-900/5 shadow-lg">
           <div class="aspect-video bg-slate-200">
-            <img alt="仿真环境截图" class="h-full w-full object-cover" src="REPLACE_WITH_SIM_IMAGE.jpg">
+            <img alt="Simulation environment" class="h-full w-full object-cover" src="REPLACE_WITH_SIM_IMAGE.jpg">
           </div>
-          <div class="p-4 text-sm text-slate-600">仿真场景：视觉传感器、目标物块与放置盘面</div>
+          <div class="p-4 text-sm text-slate-600">Simulation scene with vision sensor and target blocks</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Method -->
   <section id="method" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold">方法与实现</h2>
+      <h2 class="text-2xl font-bold">Methods and Implementation</h2>
       <div class="mt-8 grid lg:grid-cols-3 gap-6">
         <div class="rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 class="font-semibold">1) 目标检测与姿态估计</h3>
+          <h3 class="font-semibold">1) Detection & Pose Estimation</h3>
           <ul class="mt-3 list-disc pl-5 text-slate-600 space-y-2">
-            <li>颜色阈值分割 → 外接矩形中心作为抓取点</li>
-            <li>模板匹配计算旋转角，统一到“标准摆放”坐标系</li>
-            <li>对偏转角的块执行末端姿态矫正</li>
+            <li>Color thresholding → bounding box center as grasping point</li>
+            <li>Template matching to estimate rotation angle</li>
+            <li>Pose correction for rotated blocks</li>
           </ul>
         </div>
         <div class="rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 class="font-semibold">2) 手眼标定与逆运动学</h3>
+          <h3 class="font-semibold">2) Calibration & Inverse Kinematics</h3>
           <ul class="mt-3 list-disc pl-5 text-slate-600 space-y-2">
-            <li>棋盘格手眼标定，求相机→末端位姿变换矩阵</li>
-            <li>自主求解 IK（基于几何/解析），得到各关节角</li>
-            <li>Dummy 连接 tip/target 验证跟随与可达性</li>
+            <li>Hand-eye calibration using chessboard pattern</li>
+            <li>Analytical IK solver for joint angles</li>
+            <li>Validation with dummy tip-target connections</li>
           </ul>
         </div>
         <div class="rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 class="font-semibold">3) 放置规划（遗传算法）</h3>
+          <h3 class="font-semibold">3) Placement Planning (GA)</h3>
           <ul class="mt-3 list-disc pl-5 text-slate-600 space-y-2">
-            <li>坐标化描述形状，例如 I 形：[(0,-2),(0,-1),(0,0),(0,1)]</li>
-            <li>合法性检测（越界/碰撞/支撑）</li>
-            <li>评分指标：行列变换次数、可消行数、与底部距离等</li>
-            <li>适应度与目标函数 value 相关，搜索最优放置</li>
+            <li>Coordinate description of block shapes</li>
+            <li>Legality checks: boundary, collision, support</li>
+            <li>Scoring metrics: line removal, transform count, base distance</li>
+            <li>Fitness proportional to value for optimal placement</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Results -->
   <section id="results" class="bg-slate-50 py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold">实验结果</h2>
-      <p class="mt-3 text-slate-600">仿真与实机均验证：可对正放或一定角度偏转的物块完成抓取与放置，并在放置前自动进行末端姿态矫正。</p>
+      <h2 class="text-2xl font-bold">Results</h2>
+      <p class="mt-3 text-slate-600">Both simulation and real-robot experiments confirm successful grasping and placement for blocks with arbitrary rotation angles, including automatic pose correction.</p>
       <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
           <div class="text-3xl font-extrabold">7</div>
-          <div class="text-sm text-slate-600 mt-1">支持的物块形状</div>
+          <div class="text-sm text-slate-600 mt-1">Supported Shapes</div>
         </div>
         <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
-          <div class="text-3xl font-extrabold">仿真→实机</div>
-          <div class="text-sm text-slate-600 mt-1">端到端闭环</div>
+          <div class="text-3xl font-extrabold">Simulation → Real</div>
+          <div class="text-sm text-slate-600 mt-1">End-to-end verification</div>
         </div>
         <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
-          <div class="text-3xl font-extrabold">自动</div>
-          <div class="text-sm text-slate-600 mt-1">姿态矫正与顺序规划</div>
+          <div class="text-3xl font-extrabold">Automatic</div>
+          <div class="text-sm text-slate-600 mt-1">Pose Correction & Planning</div>
         </div>
         <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
-          <div class="text-3xl font-extrabold">可扩展</div>
-          <div class="text-sm text-slate-600 mt-1">可替换识别/规划模块</div>
+          <div class="text-3xl font-extrabold">Extensible</div>
+          <div class="text-sm text-slate-600 mt-1">Modular Components</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery -->
   <section id="gallery" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold">图集</h2>
+      <h2 class="text-2xl font-bold">Gallery</h2>
       <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_LAB_IMAGE.jpg" alt="实机平台"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_SIM_IMAGE.jpg" alt="仿真场景"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_CALIB_IMAGE.jpg" alt="棋盘格标定"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_DETECT_IMAGE.jpg" alt="识别结果"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_PLACE_IMAGE.jpg" alt="放置规划"/>
-        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_RESULT_IMAGE.jpg" alt="最终拼接"/>
+        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_LAB_IMAGE.jpg" alt="Real robot"/>
+        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_SIM_IMAGE.jpg" alt="Simulation"/>
+        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_CALIB_IMAGE.jpg" alt="Calibration"/>
+        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_DETECT_IMAGE.jpg" alt="Detection"/>
+        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_PLACE_IMAGE.jpg" alt="Placement"/>
+        <img class="rounded-xl shadow-sm ring-1 ring-slate-900/5" src="REPLACE_WITH_RESULT_IMAGE.jpg" alt="Final assembly"/>
       </div>
     </div>
   </section>
 
-  <!-- Links -->
   <section id="links" class="bg-slate-900 py-16 text-slate-100">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold">资源与链接</h2>
-      <p class="mt-3 text-slate-300">将下列链接替换为你的实际地址。把本页部署到 GitHub Pages / Vercel 后，将该 URL 放入你的简历。</p>
+      <h2 class="text-2xl font-bold">Resources</h2>
+      <p class="mt-3 text-slate-300">Replace the links below with your actual project resources. Once deployed, add the page URL to your resume or portfolio.</p>
       <div class="mt-6 grid md:grid-cols-3 gap-4">
         <a class="group rounded-2xl border border-white/10 p-5 hover:bg-white/5" href="REPLACE_WITH_GITHUB_URL" target="_blank" rel="noreferrer">
-          <div class="text-lg font-semibold">源码仓库 →</div>
-          <div class="text-sm text-slate-300">README、安装与运行</div>
+          <div class="text-lg font-semibold">Source Code →</div>
+          <div class="text-sm text-slate-300">README, Installation, Run Instructions</div>
         </a>
         <a class="group rounded-2xl border border-white/10 p-5 hover:bg-white/5" href="REPLACE_WITH_PAPER_OR_REPORT_URL" target="_blank" rel="noreferrer">
-          <div class="text-lg font-semibold">技术报告 / 幻灯片 →</div>
-          <div class="text-sm text-slate-300">算法与实验细节</div>
+          <div class="text-lg font-semibold">Technical Report / Slides →</div>
+          <div class="text-sm text-slate-300">Algorithms and Experimental Details</div>
         </a>
         <a class="group rounded-2xl border border-white/10 p-5 hover:bg-white/5" href="REPLACE_WITH_DEMO_VIDEO_URL" target="_blank" rel="noreferrer">
-          <div class="text-lg font-semibold">演示视频 →</div>
-          <div class="text-sm text-slate-300">2–5 分钟精简讲解</div>
+          <div class="text-lg font-semibold">Demo Video →</div>
+          <div class="text-sm text-slate-300">2–5 minute demonstration</div>
         </a>
       </div>
-      <div class="mt-8 text-sm text-slate-400">联系：<span class="font-medium text-slate-200">your.name@email.com</span> · 学校/实验室 · 时间范围（例如 2024.3–2024.6）</div>
+      <div class="mt-8 text-sm text-slate-400">Contact: <span class="font-medium text-slate-200">your.name@email.com</span> · School/Lab · Duration (e.g. Mar–Jun 2024)</div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="py-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-500">
       <div class="flex items-center justify-between">
         <div>© <span id="y"></span> Tetris-Robot</div>
-        <a href="#top" class="rounded-xl border border-slate-200 px-3 py-1.5 hover:bg-slate-50">返回顶部 ↑</a>
+        <a href="#top" class="rounded-xl border border-slate-200 px-3 py-1.5 hover:bg-slate-50">Back to top ↑</a>
       </div>
     </div>
     <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
